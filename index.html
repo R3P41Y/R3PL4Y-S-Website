@@ -7,8 +7,7 @@
     <title>R3PL4Y</title>
     <style>
         body {
-            background-image: url('minecraft_background.jpg'); /* Background Image */
-            background-size: cover;
+            background-color: black; /* Black background */
             color: #ffffff; /* White text */
             font-family: 'Courier New', Courier, monospace;
             text-align: center;
@@ -19,6 +18,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            overflow-x: hidden; /* Prevent horizontal scroll */
         }
 
         .profile-container,
@@ -158,6 +158,16 @@
         .hidden {
             display: none;
         }
+
+        @media (max-width: 768px) {
+            .tabs {
+                flex-direction: column; /* Stack tabs vertically on small screens */
+            }
+
+            .tab {
+                margin: 10px 0; /* Space between stacked tabs */
+            }
+        }
     </style>
 
     <script>
@@ -192,6 +202,13 @@
             } else if (tabName === 'info') {
                 document.querySelector('.info-container').classList.add('active');
                 document.getElementById('info-tab').classList.add('active');
+                // Scroll to info section on mobile devices
+                if (window.innerWidth <= 768) {
+                    window.scrollTo({
+                        top: document.querySelector('.info-container').offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
             }
         }
     </script>
