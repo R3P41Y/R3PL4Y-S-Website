@@ -18,9 +18,9 @@ R3PL4Ys is a platform designed to provide [brief description of what the website
 
 ## Features
 
-- [Feature 1: Description]
-- [Feature 2: Description]
-- [Feature 3: Description]
+- [Feature 1: My Dump for stuff]
+- [Feature 2: Got all school cheats on it]
+- [Feature 3: Features Special access]
 - [Additional features as needed]
 
 ## Technologies Used
@@ -38,4 +38,4 @@ To set up the R3PL4Ys website locally, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/R3PL4Ys.git
+   git clone https://github.com/R3P41Y/R3PL4Ys.git
