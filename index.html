@@ -1,48 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>R3PL4Y</title>
     <style>
         body {
-            background-color: #1e1e1e; /* Dark background */
+            background-image: url('minecraft_background.jpg'); /* Background Image */
+            background-size: cover;
             color: #ffffff; /* White text */
-            font-family: 'Courier New', Courier, monospace; /* Monospace font */
+            font-family: 'Courier New', Courier, monospace;
             text-align: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
+
+        .profile-container,
+        .info-container {
+            background-color: rgba(30, 30, 30, 0.85); /* Dark transparent background */
+            padding: 20px;
+            border-radius: 15px;
+            width: 500px;
+            display: none;
+        }
+
+        .profile-container.active,
+        .info-container.active {
+            display: block;
+        }
+
+        .profile-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-image {
+            position: relative;
+        }
+
+        .profile-image img {
+            border-radius: 50%;
+            width: 100px; /* Adjust the size as needed */
+            height: 100px; /* Adjust the size as needed */
+            object-fit: cover;
+        }
+
+        .crown {
+            width: 15px; /* Small size for the crown */
+            height: auto; /* Maintain aspect ratio */
+            vertical-align: middle; /* Align with text */
+            margin-left: 5px; /* Space between text and crown */
+        }
+
+        .badges {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .badge {
+            border-radius: 12px;
+            color: white;
+            padding: 5px 10px;
+            margin: 0 5px;
+            font-size: 0.9em;
+        }
+
+        /* Badge colors */
+        .badge.developer {
+            background-color: #4da6ff; /* Blue for Developer */
+        }
+
+        .badge.superuser {
+            background-color: #ff4d4d; /* Red for Lightning McQueen */
+        }
+
+        .badge.user {
+            background-color: #ff66cc; /* Pink for Owner */
+        }
+
+        .user-info {
+            text-align: left;
+            margin-top: 20px;
+            font-size: 1em;
+        }
+
+        .user-info h2 {
+            margin-bottom: 10px;
+        }
+
+        footer {
+            margin-top: 20px;
+            font-size: 0.9em;
+        }
+
+        /* Tab styles */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            background-color: #ffffff; /* Default white background for inactive */
+            color: #ff4d4d; /* Red text for inactive tabs */
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 0 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .tab:hover {
+            background-color: #ff9999; /* Light red on hover for inactive tabs */
+        }
+
+        .tab.active {
+            background-color: #ff4d4d; /* Red background for active tab */
+            color: white; /* White text for active tab */
+        }
+
+        /* Info Tab styles */
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        /* Updated link styles */
+        .link-container {
+            display: flex;
+            flex-direction: column; /* Stack links vertically */
+            align-items: center; /* Center align the links */
+        }
+
         a {
-            color: #4da6ff; /* Link color */
-            text-decoration: none; /* Remove underline from links */
+            background-color: #ff4d4d; /* Red background */
+            color: white; /* White text */
+            padding: 15px 25px; /* Increased padding for a button-like appearance */
+            text-decoration: none; /* Remove underline */
+            border-radius: 8px; /* Rounded corners */
+            transition: background-color 0.3s, transform 0.3s; /* Transition for effects */
+            display: inline-block; /* Ensure padding works correctly */
+            font-size: 1.1em; /* Slightly larger text */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+            margin: 10px 0; /* Space between buttons */
         }
+
         a:hover {
-            text-decoration: underline; /* Underline on hover */
+            background-color: #ff9999; /* Light red on hover */
+            transform: translateY(-2px); /* Slight lift on hover */
         }
-        .container {
-            margin: 20px;
+
+        .login-container {
+            margin-top: 20px;
         }
-        h1 {
-            font-size: 2.5em;
-        }
-        h2 {
-            font-size: 1.5em;
+
+        .hidden {
+            display: none;
         }
     </style>
-</head>
-<body>
-    <div class="container">
-        <h1>R3PL4Y</h1>
-        <h2> - Links - </h2>
-        <ul>
-            <li><a href="Xmas_List.html">My Christmas list</a></li>
-            <li><a href="https://github.com/R3P41Y/Blooket-Helper-">Real Bloocket Hacks</a></li>
-            <li><a href="https://github.com/R3P41Y/Sentace-Builder-Auto-Answer/tree/main">First Ever Sentance Builder Hacks</a></li>
-            <li><a href="https://discord.gg/7VtDAvmNSr">My discord Server</a></li>
 
-        </ul>
+    <script>
+        // Simulate a login process
+        function login() {
+            // Prompt the user to "log in"
+            var username = prompt("Enter your username:");
+            var password = prompt("Enter your password:");
+
+            // A basic username/password check for demonstration purposes
+            if (username === "root" && password === "root") {
+                // If login is successful, show the link to the Christmas List
+                document.getElementById("xmas-list-link").classList.remove("hidden");
+                alert("Login successful! Christmas list unlocked.");
+            } else {
+                alert("Invalid login credentials.");
+            }
+        }
+
+        // Function to switch between tabs
+        function showTab(tabName) {
+            // Hide all containers
+            document.querySelector('.profile-container').classList.remove('active');
+            document.querySelector('.info-container').classList.remove('active');
+            document.getElementById('profile-tab').classList.remove('active');
+            document.getElementById('info-tab').classList.remove('active');
+
+            // Show the selected tab container and highlight the tab
+            if (tabName === 'profile') {
+                document.querySelector('.profile-container').classList.add('active');
+                document.getElementById('profile-tab').classList.add('active');
+            } else if (tabName === 'info') {
+                document.querySelector('.info-container').classList.add('active');
+                document.getElementById('info-tab').classList.add('active');
+            }
+        }
+    </script>
+</head>
+
+<body onload="showTab('profile')">
+
+    <!-- Tab buttons -->
+    <div class="tabs">
+        <div class="tab active" id="profile-tab" onclick="showTab('profile')">Profile</div>
+        <div class="tab" id="info-tab" onclick="showTab('info')">Info</div>
+    </div>
+
+    <!-- Profile Container -->
+    <div class="profile-container active">
+        <div class="profile-header">
+            <div class="profile-image">
+                <img src="pfp.jpg" alt="Profile Image">
+            </div>
+            <h1>R3PL4Y</h1>
+            <p>COOKIES</p>
+            <div class="badges">
+                <div class="badge developer">Developer</div>
+                <div class="badge superuser">Lightning McQueen</div>
+                <div class="badge user">Owner <img src="crown.png" alt="Crown" class="crown"></div> <!-- Crown next to the Owner text -->
+            </div>
+        </div>
+        <div class="user-info">
+            <h2>R3PL4YS Information</h2>
+            <p>Rank: <span style="font-weight: bold; color: #4da6ff;">Owner</span> <img src="crown.png" alt="Crown" class="crown"></p> <!-- Crown next to the rank text -->
+            <p></p>
+            <h2>About</h2>
+            <p>Hello, I am R3PL4Y. I am a JavaScript developer.</p>
+        </div>
         <footer>
-            <p>R3PL4Y • Dev</p>
+            <p>R3PL4Y • <a href="#" onclick="login()">Dev</a></p> <!-- Login link -->
         </footer>
     </div>
+
+    <!-- Info/Links Container -->
+    <div class="info-container">
+        <h1>R3PL4Y</h1>
+        <h2>- Links -</h2>
+        <div class="link-container">
+            <ul>
+                <li id="xmas-list-link" class="hidden"><a href="Xmas_List.html">My Christmas List</a></li> <!-- Hidden by default -->
+                <li><a href="https://github.com/R3P41Y/Blooket-Helper-">Real Blooket Hacks</a></li>
+                <li><a href="https://github.com/R3P41Y/Sentace-Builder-Auto-Answer/tree/main">First Ever Sentence Builder Hacks</a></li>
+                <li><a href="https://discord.gg/7VtDAvmNSr">My Discord Server</a></li>
+            </ul>
+        </div>
+        <footer>
+            <p>R3PL4Y • <a href="#" onclick="login()">Dev</a></p> <!-- Login link -->
+        </footer>
+    </div>
+
 </body>
+
 </html>
