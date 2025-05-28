@@ -4,13 +4,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ZBFUEL</title>
+  <title>ZBFUEL 🔥</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
-    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
+    /* 🔥 Fire Cursor */
+    body, a, button {
+      cursor: url('https://cur.cursors-4u.net/cursors/cur-11/cur1060.cur'), auto;
+    }
 
+    /* 🔥 Flame Background */
     body {
-      background-color: black;
-      color: #ffffff;
+      background: radial-gradient(ellipse at bottom, #1a0000 0%, #000000 100%);
+      background-size: cover;
+      overflow: hidden;
+      color: #fff;
       font-family: 'Courier New', Courier, monospace;
       text-align: center;
       margin: 0;
@@ -22,14 +29,37 @@
       align-items: center;
     }
 
+    /* 🔥 Floating effect */
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    /* 🔥 Ember flicker */
+    @keyframes flicker {
+      0% { opacity: 1; }
+      50% { opacity: 0.85; }
+      100% { opacity: 1; }
+    }
+
     .profile-container {
-      background-color: rgba(30, 30, 30, 0.85);
+      background-color: rgba(30, 0, 0, 0.85);
       padding: 20px;
       border-radius: 15px;
       width: 100%;
       max-width: 500px;
       box-sizing: border-box;
       margin: 20px;
+      box-shadow: 0 0 25px #ff5e00aa;
+      transition: transform 0.4s ease;
+    }
+
+    .profile-container:hover {
+      transform: scale(1.02);
     }
 
     .profile-header {
@@ -43,6 +73,8 @@
       width: 100px;
       height: 100px;
       object-fit: cover;
+      box-shadow: 0 0 25px #ff4000, 0 0 50px #ff3300;
+      animation: float 4s ease-in-out infinite, flicker 1.5s infinite;
     }
 
     .badges {
@@ -54,21 +86,23 @@
     }
 
     .badge {
-      border-radius: 12px;
+      border-radius: 50%;
       color: white;
       padding: 10px;
-      font-size: 1.2em;
+      font-size: 1.4em;
       text-decoration: none;
-      transition: transform 0.2s;
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 45px;
-      height: 45px;
+      width: 48px;
+      height: 48px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 0 10px rgba(255, 69, 0, 0.3);
     }
 
     .badge:hover {
-      transform: scale(1.1);
+      transform: scale(1.3);
+      box-shadow: 0 0 20px #ff6600, 0 0 35px #ff9900;
     }
 
     .user-info {
@@ -79,11 +113,13 @@
 
     .user-info h2 {
       margin-bottom: 10px;
+      color: #ff7e00;
     }
 
     footer {
       margin-top: 20px;
       font-size: 0.9em;
+      color: #ffaa00;
     }
 
     @media (max-width: 600px) {
@@ -92,7 +128,7 @@
       }
 
       .badge {
-        font-size: 1em;
+        font-size: 1.2em;
         width: 40px;
         height: 40px;
       }
@@ -111,7 +147,7 @@
         <img src="https://cdn.discordapp.com/avatars/819487427915284510/f94826ab9e09ffea088a80fea9a29bde?size=1024"
           alt="Profile Image" />
       </div>
-      <h1>ZBFUEL</h1>
+      <h1 style="color: #ff3300;">ZBFUEL 🔥</h1>
 
       <div class="badges">
         <a href="https://discord.gg/zbfuel" target="_blank" title="Discord" class="badge" style="background-color: #7289DA;">
@@ -134,7 +170,7 @@
 
     <div class="user-info">
       <h2>Info</h2>
-      <p>Aura level: <span style="font-weight: bold; color: #4da6ff;">+ 10,000</span></p>
+      <p>Aura level: <span style="font-weight: bold; color: #ff4500;">+ 10,000</span></p>
       <h2>About</h2>
       <p>Hello, I am ZBFUEL. I am an unemployed 19 year old Minecraft streamer.</p>
     </div>
